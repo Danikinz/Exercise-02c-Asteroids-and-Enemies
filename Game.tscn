@@ -1,25 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/thrust.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/ship.png" type="Texture" id=3]
+[ext_resource path="res://Asteroid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
+position = Vector2( 200, 200 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = -202.597
+margin_top = -200.989
+margin_right = 821.403
+margin_bottom = 399.011
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 512, 300 )
+position = Vector2( 309.574, 124.729 )
+collision_mask = 22
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Thrust" type="Sprite" parent="Player"]
 visible = false
@@ -33,8 +36,19 @@ texture = ExtResource( 3 )
 polygon = PoolVector2Array( 5, -25.2, 5, -21.4, 20.9, 19, 17.5, 19, -4, 29.2, -4, 26.2, -20, 18.2, -20, 13.6, -3, -25.3, -3, -29.2 )
 
 [node name="Asteroids" type="Node2D" parent="."]
+position = Vector2( 800, 500 )
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource( 4 )]
+position = Vector2( -81.2928, -235.645 )
+collision_layer = 4
+collision_mask = 3
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( -2.42578, -2.4258 )
+collision_layer = 2
+collision_mask = 13
 
 [node name="Bullets" type="Node2D" parent="."]
 
